@@ -4,7 +4,7 @@ import Header from "./_components/Header";
 
 function layout({ children }) {
   return (
-    <div className="bg-slate-100 h-screen">
+    <div>
       <div className="md:w-64 hidden md:block fixed">
         <SideNav />
       </div>

@@ -1,16 +1,14 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import "@toast-ui/editor/dist/toastui-editor.css";
-import { Editor } from "@toast-ui/react-editor";
 import { Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 
 function OutputSection({ aiOutput }) {
   const editorRef = useRef();
 
   useEffect(() => {
-    const editorInstance = editorRef.current.getInstance();
-    editorInstance.setMarkdown(aiOutput);
+    editorRef.current = aiOutput;
   }, [aiOutput]);
 
   return (
@@ -25,15 +23,9 @@ function OutputSection({ aiOutput }) {
           Copia
         </Button>
       </div>
-      <Editor
+      <Textarea
         ref={editorRef}
-        initialValue="Il tuo risultato apparirà qui!"
-        initialEditType="wysiwyg"
-        height="600px"
-        useCommandShortcut={true}
-        onChange={() =>
-          console.log(editorRef.current?.getInstance().getMarkdown())
-        }
+        onChange={() => console.log(editorRef.current)}
       />
     </div>
   );

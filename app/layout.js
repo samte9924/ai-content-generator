@@ -18,7 +18,9 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${poppins.className} antialiased`}>{children}</body>
+        <body className={`${poppins.className} antialiased bg-slate-100`}>
+          {children}
+        </body>
       </html>
     </ClerkProvider>
   );

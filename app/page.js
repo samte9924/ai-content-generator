@@ -14,7 +14,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div>
-      <div className="w-full flex justify-between px-20 py-4 border-b shadow-sm">
+      <div className="w-full flex justify-between px-4 md:px-20 py-4 border-b shadow-sm">
         <Image src={"/logo.svg"} alt="logo" width={150} height={150} />
         <div className="border-l px-2 flex items-center">
           <Link href={"/dashboard"}>
@@ -30,7 +30,7 @@ export default function Home() {
       </div>
 
       <div className="bg-[url('/background-pattern.svg')] ">
-        <div className="max-w-[85rem] mx-auto px-4 pt-24 pb-10 bg-gradient-radial from-transparent from-0% via-transparent via-60% to-white to-90%">
+        <div className="max-w-[85rem] mx-auto px-4 pt-24 pb-10 bg-gradient-to-b from-transparent from-0% via-transparent via-70% to-white to-90%">
           <div className="mt-5 max-w-2xl text-center mx-auto">
             <h1 className="font-bold text-gray-700 text-4xl md:text-5xl lg:text-6xl">
               AI Content
