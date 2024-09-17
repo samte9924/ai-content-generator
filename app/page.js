@@ -4,7 +4,6 @@ import {
   Blocks,
   Handshake,
   LogIn,
-  MessageCircleCode,
   PiggyBank,
   SlidersHorizontal,
 } from "lucide-react";

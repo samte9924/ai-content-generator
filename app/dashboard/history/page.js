@@ -1,22 +1,12 @@
 "use client";
 import Templates from "@/app/(data)/Templates";
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import { db } from "@/utils/db";
 import { AIOutput } from "@/utils/schema";
-import { Expand } from "lucide-react";
-
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import CopyButton from "../_components/CopyButton";
+import DetailsDialog from "./_components/DetailsDialog";
+import ResultDialog from "./_components/ResultDialog";
 
 function History() {
   const [history, setHistory] = useState([]);
@@ -44,7 +34,6 @@ function History() {
         <div className="hidden md:block col-span-2">Risultato</div>
         <div>Data</div>
         <div className="hidden md:block">Parole</div>
-        <div className="hidden md:block">Copia</div>
         <div className="md:hidden block">Espandi</div>
       </div>
       {history.map((item, index) => (
@@ -64,80 +53,23 @@ function History() {
             </div>
           </div>
           <div className="hidden md:block p-2 overflow-hidden col-span-2">
-            <p className=" line-clamp-3">{item.aiResponse}</p>
+            <ResultDialog item={item} />
           </div>
           <div className="p-2">{item.createdAt}</div>
           <div className="hidden md:block p-2">
             {item.aiResponse.split(" ").length}
           </div>
           <div className=" text-primary cursor-pointer flex justify-start">
-            <Button
-              variant="ghost"
-              onClick={() => navigator.clipboard.writeText(item.aiResponse)}
-              className="hidden md:block text-primary font-semibold text-md"
-            >
+            <CopyButton content={item.aiResponse} variant={"ghost"}>
               Copia
-            </Button>
+            </CopyButton>
           </div>
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button variant="outline">
-                <Expand className="w-5 h-5" />
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-md">
-              <DialogHeader>
-                <DialogTitle className="flex justify-start">
-                  Dettagli
-                </DialogTitle>
-                <DialogDescription className="flex justify-start text-gray-500">
-                  ID: ${item.id}
-                </DialogDescription>
-              </DialogHeader>
-              <div className="flex flex-col gap-3">
-                <div className="flex flex-col gap-2">
-                  <h2 className="font-semibold">Template</h2>
-                  <div className="flex gap-3 items-center">
-                    <Image
-                      src={getTemplate(item.templateSlug).icon}
-                      alt="icon"
-                      width={25}
-                      height={25}
-                    />
-                    <div>{getTemplate(item.templateSlug).name}</div>
-                  </div>
-                </div>
-                <div className="flex flex-col gap-2">
-                  {Object.keys(JSON.parse(item.formData)).map((key, index) => (
-                    <div key={index} className="flex flex-col gap-2">
-                      <h2 className="font-semibold">{key}</h2>
-                      <div>{JSON.parse(item.formData)[key]}</div>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex flex-col gap-2">
-                  <h2 className="font-semibold">Data</h2>
-                  <div>{item.createdAt}</div>
-                </div>
-                <div>
-                  <Button
-                    onClick={() =>
-                      navigator.clipboard.writeText(item.aiResponse)
-                    }
-                  >
-                    Copia Risultato
-                  </Button>
-                </div>
-              </div>
-              <DialogFooter>
-                <DialogClose asChild>
-                  <Button type="button" variant="outline">
-                    Close
-                  </Button>
-                </DialogClose>
-              </DialogFooter>
-            </DialogContent>
-          </Dialog>
+          <div className="md:hidden block">
+            <DetailsDialog
+              item={item}
+              template={getTemplate(item.templateSlug)}
+            />
+          </div>
         </div>
       ))}
     </div>

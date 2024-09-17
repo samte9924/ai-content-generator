@@ -51,14 +51,14 @@ function CreateNewContent(props) {
   };
 
   return (
-    <div className="p-8">
-      <Link href={"/dashboard"}>
+    <div className="py-5">
+      <Link href={"/dashboard"} className="ml-5">
         <Button>
           <ArrowLeft />
-          Back
+          Indietro
         </Button>
       </Link>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 py-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-y-5 md:gap-5 py-5 px-4">
         <FormSection
           selectedTemplate={selectedTemplate}
           userFormInput={generateAIResponse}

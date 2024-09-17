@@ -1,0 +1,31 @@
+pre {
+  background: #011627;
+  color: #d6deeb;
+  font-family: "JetBrainsMono", monospace;
+  padding: 0.75rem 1rem;
+
+  code {
+    background: none;
+    color: inherit;
+    font-size: 1rem;
+    padding: 0;
+  }
+}
+
+ul,
+ol {
+  padding: 0 1rem;
+  margin: 1.25rem 1rem 1.25rem 0.4rem;
+
+  li p {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+  }
+}
+
+code {
+  background: #e2e2e2;
+  color: black;
+  padding: 0.2rem 0.3rem;
+  border-radius: 0.3rem;
+}

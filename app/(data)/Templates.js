@@ -44,7 +44,7 @@ export default [
     category: "Code Generation",
     icon: "/code-block-generator.png",
     aiPrompt:
-      "Generate a block of code based on the given programming language and problem description. Ensure the code is optimized and well-commented and give me the result in Rich text editor format.",
+      "Generate a block of code based on the given programming language and problem description. Ensure the code is optimized and well-commented and explained and give me the result in Rich text editor format.",
     slug: "generate-code-block",
     form: [
       {
